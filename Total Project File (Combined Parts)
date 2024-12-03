@@ -34,5 +34,23 @@ def provide_hint(word, guessed_letters):
         return random.choice(unguessed_letters)
     return None  # In case there are no more unguessed letters
 
-#Play the game
+#User plays the game 
+#Game Intro
+print ("Welcome to Hangman 2.0. \n This game will give you the chance to guess an easy word with 4 letters, a normal word with 5 letters or, \n a hard word with 6 letters")
 
+#instead of the game crashing, include an error so that user can try again to enter easy, medium, or hard
+try:
+    level = str(input("Choose a difficulty level (all lowercase letters): easy, normal, or hard \n"))
+except NameError:
+    raise NameError("Invalid Input. Please enter in all lowercase: easy, normal or hard")
+
+#Provides a game based on the difficulty chosen
+if level == "easy":
+    print("Accessing Easy Mode")
+    #easy_level()
+elif level == "normal":
+    print("Accessing Normal Mode")
+    #normal_level()
+elif level == "hard":
+    print("Accessing Hard Mode")
+    #hard_level()
