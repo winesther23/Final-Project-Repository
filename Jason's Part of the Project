@@ -1,3 +1,4 @@
+#Author: Jason Le
 #Utilizes a list to store each drawing of hangman
 
 hangman_drawings = ['''
