@@ -1,1 +1,38 @@
+import random
+
+# List of words for different levels
+words_by_level = {
+    Easy: ['boat', 'walk', 'love', 'tree', 'door'],
+    Medium: ['crazy', 'voice', 'quiet', 'month', 'music'],
+    Hard: ['humble','vanilla','pencil','device','avatar'],
+    Bonus: ['vertigo','','','','']
+}
+
+#Max number of tries
+MAX_TRIES = 11
+
+#Max number of hints
+MAX_HINTS = 2  
+
+
+# Function to choose a random word from the selected level
+def get_random_word(level):
+    return random.choice(words_by_level[level])
+
+# Function to display the current state of the word
+def display_word(word, guessed_letters):
+    return ''.join([letter if letter in guessed_letters else '_' for letter in word])
+
+# Function to check if the player has won
+def check_win(word, guessed_letters):
+    return all(letter in guessed_letters for letter in word)
+
+# Function to provide a hint (revealing an unguessed letter)
+def provide_hint(word, guessed_letters):
+    unguessed_letters = [letter for letter in word if letter not in guessed_letters]
+    if unguessed_letters:
+        return random.choice(unguessed_letters)
+    return None  # In case there are no more unguessed letters
+
+#Play the game
 
