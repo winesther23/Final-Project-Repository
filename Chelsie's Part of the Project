@@ -1,10 +1,10 @@
 #Author: Chelsie Banton
 #Game Intro
-print ("Welcome to Hangman 2.0. \n This game will give you the chance to guess an easy word with 4 letters, a normal word with 5 letters or, \n a hard word with 6 letters")
+print ("Welcome to Hangman 2.0. \n This game will give you a chance to guess an easy word with 4 letters, a normal word with 5 letters or, \n a hard word with 6 letters.")
 
 #instead of the game crashing, include an error so that user can try again to enter easy, medium, or hard
 try:
-    level = str(input("Choose a difficulty level (all lowercase letters): easy, normal, or hard \n"))
+    level = str(input("Choose a difficulty level (all lowercase letters), easy, normal, or hard:"))
 except NameError:
     raise NameError("Invalid Input. Please enter in all lowercase: easy, normal or hard")
 
