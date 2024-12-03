@@ -1,3 +1,4 @@
+#Author: Chelsie Banton
 #Game Intro
 print ("Welcome to Hangman 2.0. \n This game will give you the chance to guess an easy word with 4 letters, a normal word with 5 letters or, \n a hard word with 6 letters")
 
