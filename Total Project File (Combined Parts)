@@ -55,4 +55,6 @@ elif level == "hard":
     print("Accessing Hard Mode")
     #hard_level()
 
+def playgame
+
 
