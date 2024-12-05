@@ -2,9 +2,9 @@ import random
 
 # List of words for different levels
 words_by_level = {
-    Easy: ['boat', 'walk', 'love', 'tree', 'door'],
-    Medium: ['crazy', 'voice', 'quiet', 'month', 'music'],
-    Hard: ['humble','vanilla','pencil','device','avatar'],
+    easy: ['boat', 'walk', 'love', 'tree', 'door'],
+    medium: ['crazy', 'voice', 'quiet', 'month', 'music'],
+    hard: ['humble','vanilla','pencil','device','avatar'],
     Bonus: ['vertigo','sensible','vivacious','tranquility','gobsmacked']
 }
 
@@ -48,10 +48,11 @@ except NameError:
 if level == "easy":
     print("Accessing Easy Mode")
     #easy_level()
-elif level == "normal":
-    print("Accessing Normal Mode")
-    #normal_level()
+elif level == "medium":
+    print("Accessing Medium Mode")
+    #medium_level()
 elif level == "hard":
     print("Accessing Hard Mode")
     #hard_level()
+
 
