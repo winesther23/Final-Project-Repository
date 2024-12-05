@@ -53,6 +53,7 @@ hangman_drawings = ['''
 ------------''']
 
 
+#Foundation for restarting the game; change the variables
 def main():
     while True:
         play_hangman()
