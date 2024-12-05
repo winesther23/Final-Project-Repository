@@ -3,11 +3,10 @@
 import random
 
 # List of words for different levels
-words_by_level = {
-    Easy: ['boat', 'walk', 'love', 'tree', 'door'],
+Easy: ['boat', 'walk', 'love', 'tree', 'door'],
     Medium: ['crazy', 'voice', 'quiet', 'month', 'music'],
     Hard: ['humble','vanilla','pencil','device','avatar'],
-    Bonus: ['vertigo','','','','']
+    Bonus: ['vertigo','sensible','vivacious','tranquility','gobsmacked']
 }
 
 #Max number of tries
