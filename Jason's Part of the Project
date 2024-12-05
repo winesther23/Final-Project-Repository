@@ -51,3 +51,19 @@ hangman_drawings = ['''
  / \  |
       |
 ------------''']
+
+
+def main():
+    while True:
+        play_hangman()
+        replay_answer = input("\nDo you want to play again? (yes/no): ")
+        if replay_answer = 'yes' or replay_answer = 'Yes' :
+            continue
+        elif replay_answer = 'no' or replay_answer = 'No':
+            print("Thanks for playing!")
+            break
+        else:
+            print('Invalid answer. Please put yes or no')
+
+if __name__ == "__main__":
+    main()
