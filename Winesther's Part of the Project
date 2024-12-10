@@ -34,3 +34,8 @@ def provide_hint(word, guessed_letters):
     if unguessed_letters:
         return random.choice(unguessed_letters)
     return None  # In case there are no more unguessed letters
+
+# Function to display the board with hangman drawing
+def displayBoard(word, wrong_letters):
+    print(hangman_drawings[len(wrong_letters)])
+    print(f"Wrong letters: {' '.join(wrong_letters)}")
