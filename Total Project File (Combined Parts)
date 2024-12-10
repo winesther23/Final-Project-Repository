@@ -1,5 +1,63 @@
 import random
 
+hangman_drawings = ['''
+  +-----+
+  |     |
+        |
+        |
+        |
+        |
+------------''', '''
+  +-----+
+  |     |
+  O     |
+        |
+        |
+        |
+------------''', '''
+  +-----+
+  |     |
+  O     |
+  |     |
+        |
+        |
+------------''', '''
+  +-----+
+  |     |
+  O     |
+ /|     |
+        |
+        |
+------------''', '''
+  +-----+
+  |     |
+  O     |
+ /|\    |
+        |
+        |
+------------''', '''
+  +-----+
+  |     |
+  O     |
+ /|\    |
+ /      |
+        |
+------------''', '''
+  +-----+
+  |     |
+  O     |
+ /|\    |
+ / \    |
+        |
+------------''', '''
+  +-----+
+  |     |
+  O     |
+ /|\    |
+ / \    |
+o   o   |
+------------''']
+
 # List of words for different levels
 words_by_level = {
     easy: ['boat', 'walk', 'love', 'tree', 'door'],
@@ -34,7 +92,14 @@ def provide_hint(word, guessed_letters):
         return random.choice(unguessed_letters)
     return None  # In case there are no more unguessed letters
 
+#Function to display the board with hangman drawing
+def displayBoard(word, guessed_letters):
+
+
 #User plays the game 
+
+def playgame():
+
 #Game Intro
 print ("Welcome to Hangman 2.0. \n This game will give you the chance to guess an easy word with 4 letters, a normal word with 5 letters or, \n a hard word with 6 letters")
 
@@ -55,6 +120,48 @@ elif level == "hard":
     print("Accessing Hard Mode")
     #hard_level()
 
-def playgame
+tries = MAX_TRIES
+
+while level = str(input()):
+    word = get_random_word(level)
+    guessed_letters = set()
+    incorrect_guesses = 0
+# Display the current progress
+print("\nWord:", display_word(word, guessed_letters))
+
+print(f"Incorrect guesses left: {tries - incorrect_guesses}")
+
+# Get the player's guess
+guess = input("Enter a letter: ").lower()
+
+if len(guess) != 1 or not guess.isalpha():
+    print("Please enter a valid single letter.")
+    continue
+
+if guess in guessed_letters:
+    print(f"You've already guessed '{guess}'")
+    continue
+
+guessed_letters.add(guess)
+
+if guess in word:
+    print(f"Good guess! '{guess}' is in the word.")
+else:
+    incorrect_guesses += 1
+    print(f"Oops! '{guess}' is not in the word.")
+                
+#Determines if you win
+if check_win(word, guessed_letters):
+    print(f"Congratulations! You've guessed the word: {word}")
+    break
+
+#Determines if you lose
+if incorrect_guesses >= tries:
+    print(f"\nYou lost! The word was: {word}")
+
+
+# Run the game
+#if __name__ == "__main__":
+#    play_hangman()
 
 
