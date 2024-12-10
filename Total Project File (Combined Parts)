@@ -7,71 +7,75 @@ hangman_drawings = ['''
         |
         |
         |
-------------''', '''
+------------
+''', '''
   +-----+
   |     |
   O     |
         |
         |
         |
-------------''', '''
+------------
+''', '''
   +-----+
   |     |
   O     |
   |     |
         |
         |
-------------''', '''
+------------
+''', '''
   +-----+
   |     |
   O     |
  /|     |
         |
         |
-------------''', '''
+------------
+''', '''
   +-----+
   |     |
   O     |
  /|\    |
         |
         |
-------------''', '''
+------------
+''', '''
   +-----+
   |     |
   O     |
  /|\    |
  /      |
         |
-------------''', '''
+------------
+''', '''
   +-----+
   |     |
   O     |
  /|\    |
  / \    |
         |
-------------''', '''
+------------
+''', '''
   +-----+
   |     |
   O     |
  /|\    |
  / \    |
 o   o   |
-------------''']
+------------
+''']
 
 # List of words for different levels
 words_by_level = {
-    easy: ['boat', 'walk', 'love', 'tree', 'door'],
-    medium: ['crazy', 'voice', 'quiet', 'month', 'music'],
-    hard: ['humble','vanilla','pencil','device','avatar'],
-    Bonus: ['vertigo','sensible','vivacious','tranquility','gobsmacked']
+    'easy': ['boat', 'walk', 'love', 'tree', 'door'],
+    'medium': ['crazy', 'voice', 'quiet', 'month', 'music'],
+    'hard': ['humble','vanilla','pencil','device','avatar'],
+    'Bonus': ['vertigo','sensible','vivacious','tranquility','gobsmacked']
 }
 
-#Max number of tries
 MAX_TRIES = 11
-
-#Max number of hints
 MAX_HINTS = 2  
-
 
 # Function to choose a random word from the selected level
 def get_random_word(level):
@@ -92,90 +96,70 @@ def provide_hint(word, guessed_letters):
         return random.choice(unguessed_letters)
     return None  # In case there are no more unguessed letters
 
-#Function to display the board with hangman drawing
-def displayBoard(word, guessed_letters):
-
-
-#User plays the game 
+# Function to display the board with hangman drawing
+def displayBoard(word, wrong_letters):
+    print(hangman_drawings[len(wrong_letters)])
+    print(f"Wrong letters: {' '.join(wrong_letters)}")
 
 def playgame():
+    print("Welcome to Hangman 2.0. Choose a difficulty level: easy, medium, or hard.")
+    while True:
+        try:
+            level = input("Choose a difficulty level (all lowercase): easy, medium, or hard \n").lower()
+            if level not in words_by_level:
+                raise ValueError("Invalid level! Please choose 'easy', 'medium', or 'hard'.")
+            break
+        except ValueError as e:
+            print(e)
 
-#Game Intro
-print ("Welcome to Hangman 2.0. \n This game will give you the chance to guess an easy word with 4 letters, a normal word with 5 letters or, \n a hard word with 6 letters")
-
-#instead of the game crashing, include an error so that user can try again to enter easy, medium, or hard
-try:
-    level = str(input("Choose a difficulty level (all lowercase letters): easy, normal, or hard \n"))
-except NameError:
-    raise NameError("Invalid Input. Please enter in all lowercase: easy, normal or hard")
-
-#Provides a game based on the difficulty chosen
-if level == "easy":
-    print("Accessing Easy Mode")
-    #easy_level()
-elif level == "medium":
-    print("Accessing Medium Mode")
-    #medium_level()
-elif level == "hard":
-    print("Accessing Hard Mode")
-    #hard_level()
-
-tries = MAX_TRIES
-
-while level = str(input()):
     word = get_random_word(level)
     guessed_letters = set()
-    incorrect_guesses = 0
-# Display the current progress
-print("\nWord:", display_word(word, guessed_letters))
+    wrong_letters = []
+    tries = MAX_TRIES
 
-print(f"Incorrect guesses left: {tries - incorrect_guesses}")
+    print(f"\nThe word has {len(word)} letters. Let's play!")
 
-# Get the player's guess
-guess = input("Enter a letter: ").lower()
+    while True:
+        displayBoard(word, wrong_letters)
+        print("\nWord:", display_word(word, guessed_letters))
+        print(f"Tries remaining: {tries - len(wrong_letters)}")
 
-if len(guess) != 1 or not guess.isalpha():
-    print("Please enter a valid single letter.")
-    continue
+        guess = input("Enter a letter: ").lower()
 
-if guess in guessed_letters:
-    print(f"You've already guessed '{guess}'")
-    continue
+        if len(guess) != 1 or not guess.isalpha():
+            print("Please enter a valid single letter.")
+            continue
 
-guessed_letters.add(guess)
+        if guess in guessed_letters or guess in wrong_letters:
+            print(f"You've already guessed '{guess}'.")
+            continue
 
-if guess in word:
-    print(f"Good guess! '{guess}' is in the word.")
-else:
-    incorrect_guesses += 1
-    print(f"Oops! '{guess}' is not in the word.")
-                
-#Determines if you win
-if check_win(word, guessed_letters):
-    print(f"Congratulations! You've guessed the word: {word}")
-    break
+        if guess in word:
+            print(f"Good guess! '{guess}' is in the word.")
+            guessed_letters.add(guess)
+        else:
+            wrong_letters.append(guess)
+            print(f"Oops! '{guess}' is not in the word.")
 
-#Determines if you lose
-if incorrect_guesses >= tries:
-    print(f"\nYou lost! The word was: {word}")
+        if check_win(word, guessed_letters):
+            print(f"Congratulations! You've guessed the word: {word}")
+            break
 
-#Foundation for restarting the game; change the variables
+        if len(wrong_letters) >= tries:
+            print(f"You lost! The word was: {word}")
+            break
+
 def main():
     while True:
         playgame()
         replay_answer = input("\nDo you want to play again? (yes/no): ")
-        if replay_answer = 'yes' or replay_answer = 'Yes' :
+        if replay_answer.lower() == 'yes':
             continue
-        elif replay_answer = 'no' or replay_answer = 'No':
+        elif replay_answer.lower() == 'no':
             print("Thanks for playing!")
             break
         else:
-            print('Invalid answer. Please put yes or no')
+            print("Invalid answer. Please enter 'yes' or 'no'.")
 
-# Run the game
 if __name__ == "__main__":
     main()
-
-
-
-
