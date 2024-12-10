@@ -159,9 +159,23 @@ if check_win(word, guessed_letters):
 if incorrect_guesses >= tries:
     print(f"\nYou lost! The word was: {word}")
 
+#Foundation for restarting the game; change the variables
+def main():
+    while True:
+        playgame()
+        replay_answer = input("\nDo you want to play again? (yes/no): ")
+        if replay_answer = 'yes' or replay_answer = 'Yes' :
+            continue
+        elif replay_answer = 'no' or replay_answer = 'No':
+            print("Thanks for playing!")
+            break
+        else:
+            print('Invalid answer. Please put yes or no')
 
 # Run the game
-#if __name__ == "__main__":
-#    play_hangman()
+if __name__ == "__main__":
+    main()
+
+
 
 
